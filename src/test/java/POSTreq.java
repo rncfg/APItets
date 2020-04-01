@@ -33,5 +33,22 @@ public class POSTreq {
 
         System.out.println(response.getBody().asString());
     }
+    @Test(description = "POST")
+    public void postReqNegativeTest(){
+
+
+        JSONObject requestBody = new JSONObject();
+        requestBody.put("email", "sydney@fife");
+
+        RequestSpecification request = RestAssured.given();
+        request.header("Content-Type", "application/json");
+        request.body(requestBody.toString());
+        Response response = request.post("https://reqres.in/api/register");
+
+        int statusCode = response.getStatusCode();
+        Assert.assertEquals(statusCode, 400);
+        String error = response.jsonPath().get("error");
+        Assert.assertEquals(error,"Missing password" );
+    }
 
 }

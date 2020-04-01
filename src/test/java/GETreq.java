@@ -24,7 +24,7 @@ public class GETreq {
     }
     @Test(description = "GET")
     public void getRequestNegativeTest() throws JSONException{
-        Response response = get("/api/users");
+        Response response = get("/api/users/23");
         int statusCode = response.getStatusCode();
         Assert.assertEquals(statusCode, 404);
     }
