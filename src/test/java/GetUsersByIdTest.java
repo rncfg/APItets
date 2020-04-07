@@ -9,13 +9,10 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 
-public class GETreq {
-    @BeforeClass
-    public void setup() {
-        RestAssured.baseURI = "https://reqres.in";
-    }
+public class GetUsersByIdTest extends BaseMainClass {
 
-    @Test(description = "GET")
+
+    @Test(description = "Send GET /api/users?page={pageId}")
     public void getRequestExampleTest() throws JSONException {
         Response response = get("/api/users?page=2");
                       int statusCode = response.getStatusCode();
